@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Footer from './Footer'
+// import Footer from './Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,7 +13,7 @@ function App() {
           count is {count}
         </button>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

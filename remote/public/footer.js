@@ -1,5 +1,7 @@
 function createFooter() {
   const footer = document.createElement('footer')
+  const codeElement = document.createElement('code')
+  codeElement.textContent = 'Static footer'
   const footerLinksList = document.createElement('ul')
   const links = {
     EA: 'https://ea.com',
@@ -15,6 +17,7 @@ function createFooter() {
     linkItem.appendChild(anchor)
     footerLinksList.appendChild(linkItem)
   }
+  footer.appendChild(codeElement)
   footer.appendChild(footerLinksList)
   return footer
 }
