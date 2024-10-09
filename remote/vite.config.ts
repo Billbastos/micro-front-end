@@ -13,10 +13,18 @@ function appendFooterPlugin(): Plugin {
   return {
     name: 'append-footer-plugin',
     apply: 'build',
+    writeBundle() {
+      const footerPath = path.resolve('public', 'footer.js')
+      const footerCSSPath = path.resolve('public', 'footer.css')
+      fs.ensureFileSync(footerPath)
+      fs.copySync(footerPath, 'dist/assets/bundled-footer.js')
+      fs.ensureFileSync(footerCSSPath)
+      fs.copySync(footerCSSPath, 'dist/assets/bundled-footer.css')
+    },
     closeBundle() {
-      const filePath = path.resolve('dist/assets', 'footer.js')
+      const filePath = path.resolve('dist/assets', 'bundled-footer.js')
       fs.ensureFileSync(filePath)
-      fs.appendFileSync(filePath, 'console.log("Hello World!")')
+      fs.appendFileSync(filePath, 'console.warn("running BUNDLED VERSION!!!")')
     },
   }
 }
