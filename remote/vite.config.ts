@@ -1,33 +1,7 @@
-import { defineConfig, Plugin } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
-import fs from 'fs-extra'
+import transformAndBundleFooter from './plugin/transform-shared-footer'
 import federation from '@originjs/vite-plugin-federation'
-
-/*
- * Plugin to build shared footer file and
- * make it available in the bundle to be shared by
- * other repositories/apps.
- */
-function appendFooterPlugin(): Plugin {
-  return {
-    name: 'append-footer-plugin',
-    apply: 'build',
-    writeBundle() {
-      const footerPath = path.resolve('public', 'footer.js')
-      const footerCSSPath = path.resolve('public', 'footer.css')
-      fs.ensureFileSync(footerPath)
-      fs.copySync(footerPath, 'dist/assets/bundled-footer.js')
-      fs.ensureFileSync(footerCSSPath)
-      fs.copySync(footerCSSPath, 'dist/assets/bundled-footer.css')
-    },
-    closeBundle() {
-      const filePath = path.resolve('dist/assets', 'bundled-footer.js')
-      fs.ensureFileSync(filePath)
-      fs.appendFileSync(filePath, 'console.warn("running BUNDLED VERSION!!!")')
-    },
-  }
-}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -41,12 +15,27 @@ export default defineConfig({
       },
       shared: ['react', 'react-dom'],
     }),
-    appendFooterPlugin(),
+    transformAndBundleFooter(),
   ],
   build: {
-    modulePreload: false,
+    // modulePreload: false,
     target: 'esnext',
     minify: false,
     cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'bundled-footer') {
+            return 'assets/[name].js' // Custom name without hash for shared-modules
+          }
+          // Keep default pattern with hash for other chunks
+          return 'assets/[name]-[hash].js'
+        },
+        manualChunks: {
+          // Customize chunk splitting to separate shared modules if needed
+          'bundled-footer': ['./shared/utils.js', './shared/footer.js'], // Add shared modules here
+        },
+      },
+    },
   },
 })

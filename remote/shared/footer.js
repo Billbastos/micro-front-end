@@ -1,7 +1,9 @@
-function createFooter() {
+import { getYear } from './utils.js'
+
+export function createFooter() {
   const footer = document.createElement('footer')
   const codeElement = document.createElement('code')
-  codeElement.textContent = 'Static footer'
+  codeElement.textContent = `Static footer ${getYear()}`
   const footerLinksList = document.createElement('ul')
   const links = {
     EA: 'https://ea.com',
@@ -20,4 +22,9 @@ function createFooter() {
   footer.appendChild(codeElement)
   footer.appendChild(footerLinksList)
   return footer
+}
+
+// Make createFooter globally available
+if (window) {
+  window.createFooter = createFooter
 }

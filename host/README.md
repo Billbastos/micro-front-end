@@ -1,7 +1,7 @@
-## Simple app 2
+## Simple Host app
 
-- This app will use shared footer from app 1
-  - Vite plugin approach
+- This app will use shared footer component from the Remote app
+  - Custom vite plugin approach
   - Module federation plugin approach
 
 ## Run locally

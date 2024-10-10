@@ -1,9 +1,18 @@
-import { useState } from 'react'
 import './App.css'
+import { useState, useRef, useEffect } from 'react'
+// @ts-expect-error -- No need to check that for now.
+import { createFooter } from '../shared/footer'
 // import Footer from './Footer'
 
-function App() {
+const App = () => {
   const [count, setCount] = useState(0)
+  const footerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (footerRef.current) {
+      footerRef.current.replaceWith(createFooter())
+    }
+  }, [footerRef])
 
   return (
     <>
@@ -13,6 +22,7 @@ function App() {
           count is {count}
         </button>
       </div>
+      <div ref={footerRef}></div>
       {/* <Footer /> */}
     </>
   )
