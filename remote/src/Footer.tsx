@@ -7,22 +7,22 @@ const Footer = () => {
       <ul>
         <li>
           <a href='https://ea.com' title='EA'>
-            EA
+            Electronic Arts
           </a>
         </li>
         <li>
-          <a href='https://apple.com' title='Apple'>
-            apple
+          <a href='https://linkedin.com' title='linkedin'>
+            linkedin
           </a>
         </li>
         <li>
-          <a href='https://amazon.com' title='Amazon'>
-            amazon
+          <a href='https://instagram.com' title='instagram'>
+            instagram
           </a>
         </li>
         <li>
-          <a href='https://netflix.com' title='Netflix'>
-            netflix
+          <a href='https://github.com' title='github'>
+            github
           </a>
         </li>
       </ul>

@@ -6,10 +6,10 @@ export function createFooter() {
   codeElement.textContent = `Static footer ${getYear()}`
   const footerLinksList = document.createElement('ul')
   const links = {
-    EA: 'https://ea.com',
-    apple: 'https://apple.com',
-    amazon: 'https://amazon.com',
-    netflix: 'https://neftflix.com',
+    'Electronic Arts': 'https://ea.com',
+    linkedin: 'https://linkedin.com',
+    instagram: 'https://instagram.com',
+    github: 'https://github.com',
   }
   for (let k in links) {
     const linkItem = document.createElement('li')

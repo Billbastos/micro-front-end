@@ -7,3 +7,8 @@ footer ul {
   column-gap: 10px;
   list-style: none;
 }
+footer li::after {
+  content: '|';
+  color: #535bf2;
+  padding-left: 10px;
+}

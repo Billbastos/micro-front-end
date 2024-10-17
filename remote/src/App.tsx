@@ -2,7 +2,7 @@ import './App.css'
 import { useState, useRef, useEffect } from 'react'
 // @ts-expect-error -- No need to check that for now.
 import { createFooter } from '../shared/footer'
-// import Footer from './Footer'
+import Footer from './Footer'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -24,7 +24,7 @@ const App = () => {
         </button>
       </div>
       <div ref={footerRef}></div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

@@ -20,7 +20,9 @@
     <script src="http://localhost:5001/assets/bundled-footer-shared.js"></script>
     <script>
       const wrapperElement = document.getElementById('appWrapper')
-      wrapperElement.append(createFooter())
+      if (window.createFooter) {
+        wrapperElement.append(createFooter())
+      }
     </script>
   </body>
 </html>
