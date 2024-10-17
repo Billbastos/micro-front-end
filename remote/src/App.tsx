@@ -17,6 +17,7 @@ const App = () => {
   return (
     <>
       <h1>Remote App</h1>
+      <h2>Share static and federated footer with Host</h2>
       <div className='card'>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

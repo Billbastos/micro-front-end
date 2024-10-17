@@ -33,7 +33,7 @@ function transformAndBundleFooter(): Plugin {
           if (err) throw err
         })
       })
-      fs.unlinkSync(filePath)
+      // fs.unlinkSync(filePath)
     },
   }
 }
