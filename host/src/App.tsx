@@ -10,7 +10,7 @@ const Footer = lazy(() =>
 function App() {
   return (
     <div>
-      <h1>Host App</h1>
+      <h1>Host App 🛍</h1>
       <h2>
         It will consume both static and federated footer files from Remote
       </h2>
